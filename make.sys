@@ -1,0 +1,7 @@
+CC=icc
+FC=ifort
+RANLIB = echo
+AR = ar vr
+RM = rm 
+
+OPTS=-O3
