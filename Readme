@@ -10,3 +10,5 @@ library which can be used for compilation and linking in such case.
 
 Beware, this is project which just started, so nothing to test yet.
 ------------------------------------------------------------------
+
+But a plan is to provide complete MPI >= 1.2 realization with at least C and F77 intefaces.
