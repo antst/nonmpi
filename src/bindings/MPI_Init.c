@@ -13,7 +13,7 @@ int MPI_Init(int *argc, char ***argv) {
 NOMPI_FORTRAN(void,MPI_INIT,mpi_init,(int **argc,char ****argv, FTN_INT *ierr),( argc, argv,ierr)){
 
  /* *ierr=MPI_Init(*c_argc,***c_argv);*/
-
+ierr=0;
 }
 
 
