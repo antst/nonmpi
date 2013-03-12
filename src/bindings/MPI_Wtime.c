@@ -1,18 +1,17 @@
 #include "mpi.h"
 #include "nompi.h"
 #include "nompi_fortran.h"
-
+#include <sys/time.h>
 
 /*C Bindings*/
 double MPI_Wtime(void) {
-
- return(0);
+    struct timeval time;
+    gettimeofday(&time,(struct timezone *)0);
+    return(time.tv_sec+time.tv_usec*1.e-6);
 }
 
 /* Fortran Bindings */
 NOMPI_FORTRAN(double,MPI_WTIME,mpi_wtime,(),()){
-
- /* *ierr=MPI_Wtime(c_void);*/
 return(MPI_Wtime());
 }
 
