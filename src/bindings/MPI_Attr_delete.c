@@ -6,12 +6,14 @@
 /*C Bindings*/
 int MPI_Attr_delete(MPI_Comm comm, int keyval) {
 
+ return(0);
 }
 
 /* Fortran Bindings */
 NOMPI_FORTRAN(void,MPI_ATTR_DELETE,mpi_attr_delete,(MPI_Comm *comm,int *keyval, FTN_INT *ierr),( comm, keyval,ierr)){
 
- /* *ierr=MPI_Attr_delete(c_comm,c_keyval);/*
+ /* *ierr=MPI_Attr_delete(c_comm,c_keyval);*/
 
 }
+
 

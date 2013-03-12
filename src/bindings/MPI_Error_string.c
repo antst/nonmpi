@@ -6,12 +6,14 @@
 /*C Bindings*/
 int MPI_Error_string(int errorcode, char *string, int *resultlen) {
 
+ return(0);
 }
 
 /* Fortran Bindings */
 NOMPI_FORTRAN(void,MPI_ERROR_STRING,mpi_error_string,(int *errorcode,char **string,int **resultlen, FTN_INT *ierr),( errorcode, string, resultlen,ierr)){
 
- /* *ierr=MPI_Error_string(c_errorcode,*c_string,*c_resultlen);/*
+ /* *ierr=MPI_Error_string(c_errorcode,*c_string,*c_resultlen);*/
 
 }
+
 

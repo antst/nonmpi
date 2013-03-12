@@ -6,12 +6,14 @@
 /*C Bindings*/
 int MPI_Abort(MPI_Comm comm, int errorcode) {
 
+ return(0);
 }
 
 /* Fortran Bindings */
 NOMPI_FORTRAN(void,MPI_ABORT,mpi_abort,(MPI_Comm *comm,int *errorcode, FTN_INT *ierr),( comm, errorcode,ierr)){
 
- /* *ierr=MPI_Abort(c_comm,c_errorcode);/*
+ /* *ierr=MPI_Abort(c_comm,c_errorcode);*/
 
 }
+
 

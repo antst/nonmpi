@@ -38,6 +38,6 @@ awk  '{ss=$0;i1=index(ss,"(");
 	fnamL=tolower(fname);
 	fnamU=toupper(fname);
 	sfname="fns/"fname".c"; 
-	print  "#include \"mpi.h\"\n\#include \"nompi.h\"\n#include \"nompi_fortran.h\"\n\n\n/*C Bindings*/\n"$0"{\n\n}\n\n/* Fortran Bindings */\nNOMPI_FORTRAN(void,"fnamU","fnamL","Farg","plist"){\n\n /* *ierr="fname"("Carg");/*\n\n}\n" > sfname; 
+	print  "#include \"mpi.h\"\n\#include \"nompi.h\"\n#include \"nompi_fortran.h\"\n\n\n/*C Bindings*/\n"$0"{\n\n return(0);\n}\n\n/* Fortran Bindings */\nNOMPI_FORTRAN(void,"fnamU","fnamL","Farg","plist"){\n\n /* *ierr="fname"("Carg");*/\n\n}\n\n" > sfname; 
 	close(sfname); 
 	print $0";" > "mpi.h";}' c_fn.txt

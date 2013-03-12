@@ -6,12 +6,14 @@
 /*C Bindings*/
 int MPI_Wait(MPI_Request *request, MPI_Status *status) {
 
+ return(0);
 }
 
 /* Fortran Bindings */
 NOMPI_FORTRAN(void,MPI_WAIT,mpi_wait,(MPI_Request **request,MPI_Status **status, FTN_INT *ierr),( request, status,ierr)){
 
- /* *ierr=MPI_Wait(*c_request,*c_status);/*
+ /* *ierr=MPI_Wait(*c_request,*c_status);*/
 
 }
+
 

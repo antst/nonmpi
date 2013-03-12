@@ -4,14 +4,16 @@
 
 
 /*C Bindings*/
-int double MPI_Wtick(void) {
+double MPI_Wtick() {
 
+ return(0);
 }
 
 /* Fortran Bindings */
-NOMPI_FORTRAN(void,MPI_WTICK,mpi_wtick,(*void, FTN_INT *ierr),( void,ierr)){
+NOMPI_FORTRAN(double,MPI_WTICK,mpi_wtick,(),()){
 
- /* *ierr=MPI_Wtick(c_void);/*
-
+ /* *ierr=MPI_Wtick(c_void);*/
+return(MPI_Wtick());
 }
+
 

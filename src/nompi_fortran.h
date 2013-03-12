@@ -1,5 +1,5 @@
-#ifndef NOMPI_FORTRAN
-#define NOMPI_FORTRAN
+#ifndef NOMPI_FORTRAN_H
+#define NOMPI_FORTRAN_H
 
 #define FTN_INT int
 

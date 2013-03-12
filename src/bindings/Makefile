@@ -1,14 +1,18 @@
 include ../../make.sys
 include obj.lst
-LIB=../../../libmpi.a
+LIB=../../lib/libmpi.a
 
 lib: $(OBJ_LST)
-	$(AR) $(OBJ_LST) $(LIB)
+	$(AR)  $(LIB) $(OBJ_LST)
+	$(RANLIB) $(LIB)
 
 .SUFFIXES : .o .f .c
     
 .f.o:
 	$(F77) $(OPTS) -c $*.f
 .c.o:
-	$(CC) $(OPTS) -I. -I../ -c $*.c
+	$(CC)  $(OPTS) -I. -I../ -c $*.c
+	
+clean:
+	@$(RM) -f $(OBJ_LST)
 

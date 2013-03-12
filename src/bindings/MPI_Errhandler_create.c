@@ -6,12 +6,14 @@
 /*C Bindings*/
 int MPI_Errhandler_create(MPI_Handler_function *function, MPI_Errhandler *errhandler) {
 
+ return(0);
 }
 
 /* Fortran Bindings */
 NOMPI_FORTRAN(void,MPI_ERRHANDLER_CREATE,mpi_errhandler_create,(MPI_Handler_function **function,MPI_Errhandler **errhandler, FTN_INT *ierr),( function, errhandler,ierr)){
 
- /* *ierr=MPI_Errhandler_create(*c_function,*c_errhandler);/*
+ /* *ierr=MPI_Errhandler_create(*c_function,*c_errhandler);*/
 
 }
+
 

@@ -1,16 +1,22 @@
-LIB= ../lib/libnonmpi.a
+LIB= ../lib/libmpi.a
 OBJ= wtime.o
 
-all: $(LIB)
+.PHONY: bindings utils
+
+lib: bindings utils
 
 include ../make.sys
 
 clean:
-	$(RM) *.o *.mod *.MOD *.lst $(LIB)
+	(cd bindings && make clean)
+	$(RM) -f *.o *.mod *.MOD *.lst $(LIB)
 
-$(LIB): $(OBJ)
-	$(AR) $@ $?
-	$(RANLIB) $@ 
+bindings:
+	(cd bindings && make lib)
+
+utils: $(OBJ)
+	$(AR) $(LIB) $?
+	$(RANLIB) $(LIB)
 
 .SUFFIXES :
 .SUFFIXES : .o .F90 .f .c

@@ -4,7 +4,8 @@
 all: lib
 
 lib:
-	cd src && make
+	cd src && make lib
 	
-	
+clean:
+	cd src && make clean	
 	

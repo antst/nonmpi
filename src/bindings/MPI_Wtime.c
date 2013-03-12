@@ -4,14 +4,16 @@
 
 
 /*C Bindings*/
-int double MPI_Wtime(void) {
+double MPI_Wtime(void) {
 
+ return(0);
 }
 
 /* Fortran Bindings */
-NOMPI_FORTRAN(void,MPI_WTIME,mpi_wtime,(*void, FTN_INT *ierr),( void,ierr)){
+NOMPI_FORTRAN(double,MPI_WTIME,mpi_wtime,(),()){
 
- /* *ierr=MPI_Wtime(c_void);/*
-
+ /* *ierr=MPI_Wtime(c_void);*/
+return(MPI_Wtime());
 }
+
 

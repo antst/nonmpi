@@ -6,12 +6,13 @@
 /*C Bindings*/
 int MPI_Pcontrol(const int level, ...){
 
+ return(0);
 }
 
 /* Fortran Bindings */
-NOMPI_FORTRAN(void,MPI_PCONTROL,mpi_pcontrol,(const *int level,*..., FTN_INT *ierr),( int level, ...,ierr)){
+NOMPI_FORTRAN(void,MPI_PCONTROL,mpi_pcontrol,(const int *level),( level)){
 
- /* *ierr=MPI_Pcontrol(c_int level,c_...);/*
+ /* *ierr=MPI_Pcontrol(c_int level,c_...);*/
 
 }
 

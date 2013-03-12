@@ -1,3 +1,196 @@
+#ifndef MPI_H
+#define MPI_H
+
+/* return codes (both C and Fortran) */ 
+#define MPI_SUCCESS                     0
+#define MPI_ERR_BUFFER                  1
+#define MPI_ERR_COUNT                   2
+#define MPI_ERR_TYPE                    3
+#define MPI_ERR_TAG                     4
+#define MPI_ERR_COMM                    5
+#define MPI_ERR_RANK                    6
+#define MPI_ERR_REQUEST                 7
+#define MPI_ERR_ROOT                    8
+#define MPI_ERR_GROUP                   9
+#define MPI_ERR_OP                      10
+#define MPI_ERR_TOPOLOGY                11
+#define MPI_ERR_DIMS                    12
+#define MPI_ERR_ARG                     13
+#define MPI_ERR_UNKNOWN                 14
+#define MPI_ERR_TRUNCATE                15
+#define MPI_ERR_OTHER                   16
+#define MPI_ERR_INTERN                  17
+#define MPI_PENDING                     18
+#define MPI_ERR_IN_STATUS               19
+#define MPI_ERR_LASTCODE                20
+ 
+/* assorted constants (both C and Fortran) */ 
+#define MPI_BOTTOM                      NULL 
+#define MPI_PROC_NULL                   -1 
+#define MPI_ANY_SOURCE                  -2
+#define MPI_ANY_TAG                     -3 
+#define MPI_UNDEFINED                   -32766
+#define MPI_BSEND_OVERHEAD              32
+#define MPI_KEYVAL_INVALID              -1
+
+ 
+
+ 
+/* Maximum sizes for strings */ 
+#define MPI_MAX_PROCESSOR_NAME          256
+#define MPI_MAX_ERROR_STRING            256
+
+ 
+/* elementary datatypes (C) */ 
+#define MPI_CHAR                        1
+#define MPI_SHORT                       2
+#define MPI_INT                         3
+#define MPI_LONG  
+#define MPI_UNSIGNED_CHAR 
+#define MPI_UNSIGNED_SHORT 
+#define MPI_UNSIGNED 
+#define MPI_UNSIGNED_LONG 
+#define MPI_FLOAT  
+#define MPI_DOUBLE  
+#define MPI_LONG_DOUBLE 
+#define MPI_BYTE  
+#define MPI_PACKED 
+
+ 
+/* elementary datatypes (Fortran) */ 
+#define MPI_INTEGER 
+#define MPI_REAL 
+#define MPI_DOUBLE_PRECISION 
+#define MPI_COMPLEX 
+#define MPI_DOUBLE_COMPLEX 
+#define MPI_LOGICAL 
+#define MPI_CHARACTER 
+#define MPI_BYTE 
+#define MPI_PACKED 
+
+ 
+/* datatypes for reduction functions (C) */ 
+#define MPI_FLOAT_INT 
+#define MPI_DOUBLE_INT 
+#define MPI_LONG_INT 
+#define MPI_2INT 
+#define MPI_SHORT_INT 
+#define MPI_LONG_DOUBLE_INT 
+
+ 
+/* datatypes for reduction functions (Fortran) */ 
+#define MPI_2REAL 
+#define MPI_2DOUBLE_PRECISION 
+#define MPI_2INTEGER 
+
+ 
+/* optional datatypes (Fortran) */ 
+#define MPI_INTEGER1 
+#define MPI_INTEGER2 
+#define MPI_INTEGER4 
+#define MPI_REAL2 
+#define MPI_REAL4 
+#define MPI_REAL8 
+
+ 
+/* optional datatypes (C) */ 
+#define MPI_LONG_LONG_INT 
+
+ 
+/* special datatypes for constructing derived datatypes 
+#define MPI_UB 
+#define MPI_LB 
+
+ 
+/* reserved communicators (C and Fortran) */ 
+#define MPI_COMM_WORLD 
+#define MPI_COMM_SELF 
+
+ 
+/* results of communicator and group comparisons */ 
+
+ 
+#define MPI_IDENT 
+#define MPI_CONGRUENT 
+#define MPI_SIMILAR 
+#define MPI_UNEQUAL 
+
+ 
+/* environmental inquiry keys (C and Fortran) */ 
+#define MPI_TAG_UB 
+#define MPI_IO 
+#define MPI_HOST 
+#define MPI_WTIME_IS_GLOBAL 
+
+ 
+/* collective operations (C and Fortran) */ 
+#define MPI_MAX 
+#define MPI_MIN 
+#define MPI_SUM 
+#define MPI_PROD 
+#define MPI_MAXLOC 
+#define MPI_MINLOC 
+#define MPI_BAND 
+#define MPI_BOR 
+#define MPI_BXOR 
+#define MPI_LAND 
+#define MPI_LOR 
+#define MPI_LXOR 
+
+ 
+/* Null handles */ 
+#define MPI_GROUP_NULL 
+#define MPI_COMM_NULL 
+#define MPI_DATATYPE_NULL 
+#define MPI_REQUEST_NULL 
+#define MPI_OP_NULL 
+#define MPI_ERRHANDLER_NULL 
+
+ 
+/* Empty group */ 
+#define MPI_GROUP_EMPTY 
+
+ 
+/* topologies (C and Fortran) */ 
+#define MPI_GRAPH 
+#define MPI_CART 
+
+ 
+/* opaque types (C) */ 
+#define MPI_Aint   int
+#define MPI_Status int
+ 
+/* handles to assorted structures (C) */ 
+#define MPI_Group    int
+#define MPI_Comm     int
+#define MPI_Datatype int
+#define MPI_Request  int
+#define MPI_Op       int
+#define MPI_Errhandler int
+
+
+
+/* Error-handling specifiers (C and Fortran) */ 
+#define MPI_ERRORS_ARE_FATAL 
+#define MPI_ERRORS_RETURN 
+
+ 
+/* prototypes for user-defined functions (C) */ 
+
+typedef int  MPI_Copy_function(MPI_Comm oldcomm, int keyval, 
+                    void *extra_state, void *attribute_val_in, 
+                    void *attribute_val_out, int *flag); 
+                    
+typedef int  MPI_Delete_function(MPI_Comm comm, int keyval, 
+                          void *attribute_val, void *extra_state);
+                          
+typedef void MPI_Handler_function(MPI_Comm *, int *, ...); 
+
+typedef void MPI_User_function( void *invec, void *inoutvec, int *len, 
+                      MPI_Datatype *datatype); 
+
+
+
 int MPI_Send(void *buf, int count, MPI_Datatype datatype, int dest, int tag, MPI_Comm comm) ;
 int MPI_Recv(void *buf, int count, MPI_Datatype datatype, int source, int tag, MPI_Comm comm, MPI_Status *status) ;
 int MPI_Get_count(MPI_Status *status, MPI_Datatype datatype, int *count) ;
@@ -126,3 +319,5 @@ int MPI_Finalize(void) ;
 int MPI_Initialized(int *flag) ;
 int MPI_Abort(MPI_Comm comm, int errorcode) ;
 int MPI_Pcontrol(const int level, ...);
+
+#endif

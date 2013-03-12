@@ -4,14 +4,16 @@
 
 
 /*C Bindings*/
-int MPI_Finalize(void) {
+int MPI_Finalize() {
 
+ return(0);
 }
 
 /* Fortran Bindings */
-NOMPI_FORTRAN(void,MPI_FINALIZE,mpi_finalize,(*void, FTN_INT *ierr),( void,ierr)){
+NOMPI_FORTRAN(void,MPI_FINALIZE,mpi_finalize,(FTN_INT *ierr),(ierr)){
 
- /* *ierr=MPI_Finalize(c_void);/*
+ /* *ierr=MPI_Finalize();*/
 
 }
+
 
