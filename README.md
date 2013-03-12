@@ -1,7 +1,7 @@
 NONMPI 
 ======
 
-aka sequantial/serial MPI library.
+aka sequential/serial MPI library.
 
 Although it looks strange on a first glance, 
 but there is dozen of reasons why one would like 
