@@ -1,29 +1,18 @@
-LIB= ../lib/libmpi.a
-OBJ= wtime.o
-
-.PHONY: bindings utils
-
-lib: bindings utils
-
 include ../make.sys
+include obj.lst
+LIB=../lib/libmpi.a
 
-clean:
-	(cd bindings && make clean)
-	$(RM) -f *.o *.mod *.MOD *.lst $(LIB)
-
-bindings:
-	(cd bindings && make lib)
-
-utils: $(OBJ)
-	$(AR) $(LIB) $?
+lib: $(OBJ_LST)
+	$(AR)  $(LIB) $(OBJ_LST)
 	$(RANLIB) $(LIB)
 
-.SUFFIXES :
-.SUFFIXES : .o .F90 .f .c
+.SUFFIXES : .o .f .c
     
-.F90.o:
-	$(F90) $(OPTS) -c $<
 .f.o:
 	$(F77) $(OPTS) -c $*.f
 .c.o:
-	$(CC) $(OPTS) -I. -c $*.c
+	$(CC)  $(OPTS) -I. -I../include -c $*.c
+	
+clean:
+	@$(RM) -f $(OBJ_LST)
+
