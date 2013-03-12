@@ -12,8 +12,7 @@ int MPI_Finalize() {
 /* Fortran Bindings */
 NOMPI_FORTRAN(void,MPI_FINALIZE,mpi_finalize,(FTN_INT *ierr),(ierr)){
 
- /* *ierr=MPI_Finalize();*/
-
+*ierr=0;
 }
 
 
